@@ -34,10 +34,17 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="g-select_sample.css?v=202607281410">  
+  <style>
+    /* STORY STYLE 配色テーマ */
+    body { background: linear-gradient(180deg, #f3d7b5 0, #faedde 700px, #faedde 100%); }
+    .section-header-center .section-sub-en { color: #e9b779; }
+    .btn-switch.active { background: #f5dfc3; color: #6b4a28; }
+  </style>
   <!-- JS -->
   <script src="https://www.ground-f.com/image_for_wdp/g-select/js/auto-slider.js" defer></script>
   <script src="https://www.ground-f.com/image_for_wdp/g-select/js/slider.js" defer></script>
 
+  <link rel="stylesheet" href="favorites.css?v=3">
 </head>
 <body>
 
@@ -69,12 +76,10 @@
     </button>
     
     <ul class="sub-nav-top-list" id="js-menu-list">
-      <li><a href="https://www.ground-f.com/image_for_wdp/g-select/index.html">TOP</a></li>
-      <li><a href="#">Taste Style</a></li>
-      <li><a href="#">Style Detail</a></li>
-      <li class="current"><a href="#">Story Style</a></li>
-      <li><a href="#">Select Pattern</a></li>
-      <li><a href="#">Select Item</a></li>
+      <li><a href="https://www.ground-f.com/image_for_wdp/g-select/index.html">【現行G-SELECTサイト】</a></li>
+      <li><a href="taste_style.html">Taste Style</a></li>
+      <li class="current"><a href="story_style.html">Story Style</a></li>
+      <li><a href="product_sample.html">Select Item</a></li>
     </ul>
   </nav>
 
@@ -83,7 +88,7 @@
     <div class="nav-bottom-inner">
       <a href="https://www.ground-f.com/image_for_wdp/g-select/index.html" class="nav-bottom-left">G-SELECT</a>
       <div class="nav-bottom-right">
-        <a href="#" class="btn-switch">Taste Style</a>
+        <a href="taste_style.html" class="btn-switch">Taste Style</a>
         <a href="#" class="btn-switch active">Story Style</a>
       </div>
     </div>
@@ -106,7 +111,7 @@
       <!-- Story Grid (4列 → スマホ2列) -->
       <div class="story-grid">
         
-        <a href="#" class="story-card-item" style="background-image: url('https://www.ground-f.com/image_for_wdp/g-select/images/ecrele.jpg');">
+        <a href="style_relax.html" class="story-card-item" style="background-image: url('images/story/relax/01.jpg');">
           <div class="story-card-inner">
             <span class="story-sub-title">PLACE TO RETURN</span>
             <h4>RELAX</h4>
@@ -114,7 +119,7 @@
           </div>
         </a>
 
-        <a href="#" class="story-card-item" style="background-image: url('https://www.ground-f.com/image_for_wdp/g-select/images/ecrele.jpg');">
+        <a href="style_green.html" class="story-card-item" style="background-image: url('images/story/green/01.jpg');">
           <div class="story-card-inner">
             <span class="story-sub-title">PLACE TO GROW</span>
             <h4>GREEN</h4>
@@ -122,7 +127,7 @@
           </div>
         </a>
 
-        <a href="#" class="story-card-item" style="background-image: url('https://www.ground-f.com/image_for_wdp/g-select/images/ecrele.jpg');">
+        <a href="style_frame.html" class="story-card-item" style="background-image: url('images/story/frame/01.jpg');">
           <div class="story-card-inner">
             <span class="story-sub-title">PLACE TO VIEW</span>
             <h4>FRAME</h4>
@@ -130,7 +135,7 @@
           </div>
         </a>
 
-        <a href="#" class="story-card-item" style="background-image: url('https://www.ground-f.com/image_for_wdp/g-select/images/ecrele.jpg');">
+        <a href="style_night.html" class="story-card-item" style="background-image: url('images/story/night/01.jpg');">
           <div class="story-card-inner">
             <span class="story-sub-title">PLACE TO ILLUMINATE</span>
             <h4>NIGHT</h4>
@@ -138,7 +143,7 @@
           </div>
         </a>
 
-        <a href="#" class="story-card-item" style="background-image: url('https://www.ground-f.com/image_for_wdp/g-select/images/ecrele.jpg');">
+        <a href="style_cafe.html" class="story-card-item" style="background-image: url('images/story/cafe/01.jpg');">
           <div class="story-card-inner">
             <span class="story-sub-title">PLACE TO REMAIN</span>
             <h4>CAFE</h4>
@@ -146,7 +151,7 @@
           </div>
         </a>
 
-        <a href="#" class="story-card-item" style="background-image: url('https://www.ground-f.com/image_for_wdp/g-select/images/ecrele.jpg');">
+        <a href="style_gather.html" class="story-card-item" style="background-image: url('images/story/gather/01.jpg');">
           <div class="story-card-inner">
             <span class="story-sub-title">PLACE TO COMMUNITY</span>
             <h4>GATHER</h4>
@@ -154,7 +159,7 @@
           </div>
         </a>
 
-        <a href="#" class="story-card-item" style="background-image: url('https://www.ground-f.com/image_for_wdp/g-select/images/ecrele.jpg');">
+        <a href="style_hobby.html" class="story-card-item" style="background-image: url('images/story/hobby/01.jpg');">
           <div class="story-card-inner">
             <span class="story-sub-title">PLACE TO MAKE</span>
             <h4>HOBBY</h4>
@@ -162,7 +167,7 @@
           </div>
         </a>
 
-        <a href="#" class="story-card-item" style="background-image: url('https://www.ground-f.com/image_for_wdp/g-select/images/ecrele.jpg');">
+        <a href="style_play_wellness.html" class="story-card-item" style="background-image: url('images/story/play_wellness/01.jpg');">
           <div class="story-card-inner">
             <span class="story-sub-title">PLACE TO MOVE</span>
             <h4>PLAY &amp; WELLNESS</h4>
@@ -202,5 +207,6 @@
 <!-- 外部JSファイル -->
 <script src="custom-nav.js" defer></script>
 
+<script src="favorites.js?v=4"></script>
 </body>
 </html>

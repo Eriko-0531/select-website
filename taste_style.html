@@ -34,11 +34,18 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="g-select_sample.css?v=2026072117">  
+  <style>
+    /* TASTE STYLE 配色テーマ */
+    body { background: linear-gradient(180deg, #e6e8e7 0, #f2f3f2 700px, #f2f3f2 100%); }
+    .section-header-center .section-sub-en { color: #6abadc; }
+    .btn-switch.active { background: #6abadc; color: #fff; }
+  </style>
   <!-- JS -->
   <script src="https://www.ground-f.com//image_for_wdp/g-select/js/auto-slider.js" defer></script>
   <script src="https://www.ground-f.com//image_for_wdp/g-select/js/circle-anim.js" defer></script>
   <script src="https://www.ground-f.com//image_for_wdp/g-select/js/slider.js" defer></script>
 
+  <link rel="stylesheet" href="favorites.css?v=3">
 </head>
 <body>
 
@@ -70,12 +77,10 @@
     </button>
     
     <ul class="sub-nav-top-list" id="js-menu-list">
-      <li><a href="https://www.ground-f.com/image_for_wdp/g-select/index.html">TOP</a></li>
-      <li class="current"><a href="#">Taste Style</a></li>
-      <li><a href="#">Style Detail</a></li>
-      <li><a href="#">Story Style</a></li>
-      <li><a href="#">Select Pattern</a></li>
-      <li><a href="#">Select Item</a></li>
+      <li><a href="https://www.ground-f.com/image_for_wdp/g-select/index.html">【現行G-SELECTサイト】</a></li>
+      <li class="current"><a href="taste_style.html">Taste Style</a></li>
+      <li><a href="story_style.html">Story Style</a></li>
+      <li><a href="product_sample.html">Select Item</a></li>
     </ul>
   </nav>
 
@@ -85,7 +90,7 @@
       <a href="https://www.ground-f.com/image_for_wdp/g-select/index.html"><div class="nav-bottom-left">G-SELECT</div></a>
       <div class="nav-bottom-right">
         <a href="#" class="btn-switch active">Taste Style</a>
-        <a href="#" class="btn-switch">Story Style</a>
+        <a href="story_style.html" class="btn-switch">Story Style</a>
       </div>
     </div>
   </nav>
@@ -110,9 +115,9 @@
       </div>
 
       <div class="daily-grid">
-        <a href="#" class="daily-item">
+        <a href="style_cool.html" class="daily-item">
           <div class="card-img-wrapper">
-            <img src="https://www.ground-f.com/image_for_wdp/g-select/images/ecrele.jpg" alt="COOL" loading="lazy">
+            <img src="images/taste/cool/01.jpg" alt="COOL" loading="lazy">
           </div>
           <div class="daily-item-overlay">
             <h4>クール</h4>
@@ -120,9 +125,9 @@
           </div>
         </a>
 
-        <a href="#" class="daily-item">
+        <a href="style_natural_cool.html" class="daily-item">
           <div class="card-img-wrapper">
-            <img src="https://www.ground-f.com/image_for_wdp/g-select/images/ecrele.jpg" alt="NATURAL COOL" loading="lazy">
+            <img src="images/taste/natural_cool/01.jpg" alt="NATURAL COOL" loading="lazy">
           </div>
           <div class="daily-item-overlay">
             <h4>ナチュラル<br>クール</h4>
@@ -130,9 +135,9 @@
           </div>
         </a>
 
-        <a href="#" class="daily-item">
+        <a href="style_natural_warm.html" class="daily-item">
           <div class="card-img-wrapper">
-            <img src="https://www.ground-f.com/image_for_wdp/g-select/images/ecrele.jpg" alt="NATURAL WARM" loading="lazy">
+            <img src="images/taste/natural_warm/01.jpg" alt="NATURAL WARM" loading="lazy">
           </div>
           <div class="daily-item-overlay">
             <h4>ナチュラル<br>ウォーム</h4>
@@ -140,9 +145,9 @@
           </div>
         </a>
 
-        <a href="#" class="daily-item">
+        <a href="style_cute.html" class="daily-item">
           <div class="card-img-wrapper">
-            <img src="https://www.ground-f.com/image_for_wdp/g-select/images/ecrele.jpg" alt="CUTE" loading="lazy">
+            <img src="images/taste/cute/01.jpg" alt="CUTE" loading="lazy">
           </div>
           <div class="daily-item-overlay">
             <h4>キュート</h4>
@@ -159,42 +164,42 @@
       </div>
 
       <div class="unique-grid">
-        <a href="#" class="pattern-box-img" style="background-image: url('https://www.ground-f.com/image_for_wdp/g-select/images/ecrele.jpg');">
+        <a href="style_hotel.html" class="pattern-box-img" style="background-image: url('images/taste/hotel/01.jpg');">
           <div class="pattern-box-inner">
             <h4>ホテルライク</h4>
             <p>上質さと洗練さを追求した、高級感のある空間。 →</p>
           </div>
         </a>
 
-        <a href="#" class="pattern-box-img" style="background-image: url('https://www.ground-f.com/image_for_wdp/g-select/images/ecrele.jpg');">
+        <a href="style_resort.html" class="pattern-box-img" style="background-image: url('images/taste/resort/01.jpg');">
           <div class="pattern-box-inner">
             <h4>リゾート</h4>
             <p>光や風を取り込み、非日常を楽しむ開放的な空間。 →</p>
           </div>
         </a>
 
-        <a href="#" class="pattern-box-img" style="background-image: url('https://www.ground-f.com/image_for_wdp/g-select/images/ecrele.jpg');">
+        <a href="style_botanical.html" class="pattern-box-img" style="background-image: url('images/taste/botanical/01.jpg');">
           <div class="pattern-box-inner">
             <h4>ボタニカル</h4>
             <p>植物を主役に、四季の変化を楽しむ緑豊かな空間。 →</p>
           </div>
         </a>
 
-        <a href="#" class="pattern-box-img" style="background-image: url('https://www.ground-f.com/image_for_wdp/g-select/images/ecrele.jpg');">
+        <a href="style_vintage.html" class="pattern-box-img" style="background-image: url('images/taste/vintage/01.jpg');">
           <div class="pattern-box-inner">
             <h4>ヴィンテージ</h4>
             <p>古材やレンガの味わいを活かした、温もりある空間。 →</p>
           </div>
         </a>
 
-        <a href="#" class="pattern-box-img" style="background-image: url('https://www.ground-f.com/image_for_wdp/g-select/images/ecrele.jpg');">
+        <a href="style_japandi.html" class="pattern-box-img" style="background-image: url('images/taste/japandi/01.jpg');">
           <div class="pattern-box-inner">
             <h4>ジャパンディ</h4>
             <p>シンプルで温もりのある、自然体で心地よい空間。 →</p>
           </div>
         </a>
 
-        <a href="#" class="pattern-box-img" style="background-image: url('https://www.ground-f.com/image_for_wdp/g-select/images/ecrele.jpg');">
+        <a href="style_japanese.html" class="pattern-box-img" style="background-image: url('images/taste/japanese/01.jpg');">
           <div class="pattern-box-inner">
             <h4>ジャパニーズ</h4>
             <p>余白と静けさを大切にした、品格ある和の空間。 →</p>
@@ -232,5 +237,6 @@
 <!-- 外部JSファイル -->
 <script src="custom-nav.js" defer></script>
 
+<script src="favorites.js?v=4"></script>
 </body>
 </html>

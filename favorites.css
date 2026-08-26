@@ -1,0 +1,442 @@
+/* G-SELECT お気に入りピックアップ機能 (favorites.js と対) - 第1弾 */
+
+[data-gs-fav] {
+  position: relative;
+}
+
+.gs-fav-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 17px;
+  height: 17px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 40;
+  opacity: 0.5;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.gs-fav-btn:hover {
+  transform: scale(1.08);
+}
+
+.gs-fav-btn svg {
+  width: 9px;
+  height: 9px;
+  fill: none;
+  stroke: #999;
+  stroke-width: 1.8;
+  transition: fill 0.15s ease, stroke 0.15s ease;
+}
+
+.gs-fav-btn.is-active {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.gs-fav-btn.is-active svg {
+  fill: #e0507a;
+  stroke: #e0507a;
+}
+
+.gs-fav-btn.is-pop svg {
+  animation: gs-fav-pop 0.28s ease;
+}
+
+@keyframes gs-fav-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+
+/* お気に入りピックアップパネル */
+.gs-panel {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  width: 240px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  z-index: 1500;
+  font-family: inherit;
+  overflow: hidden;
+}
+
+.gs-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: #2c2c2c;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+.gs-panel-header-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.gs-panel-count {
+  font-size: 11px;
+  background: #e0507a;
+  color: #fff;
+  border-radius: 999px;
+  padding: 1px 8px;
+  margin-left: 6px;
+}
+
+.gs-panel-toggle {
+  font-size: 12px;
+  color: #ccc;
+}
+
+.gs-panel-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gs-panel.is-collapsed .gs-panel-body {
+  display: none;
+}
+
+.gs-panel-label {
+  font-size: 11px;
+  color: #777;
+}
+
+.gs-panel-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 7px 9px;
+  font-size: 13px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.gs-panel-btns {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.gs-panel-btn {
+  flex: 1;
+  padding: 8px 0;
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background: #f7f7f7;
+  cursor: pointer;
+  text-align: center;
+}
+
+.gs-panel-btn:hover {
+  background: #efefef;
+}
+
+.gs-panel-btn--primary {
+  background: #2c2c2c;
+  color: #fff;
+  border-color: #2c2c2c;
+}
+
+.gs-panel-btn--primary:hover {
+  background: #444;
+}
+
+.gs-panel-memo-btn {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.gs-panel-memo-dot {
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #e0507a;
+  opacity: 0;
+}
+
+.gs-panel-memo-dot.is-visible {
+  opacity: 1;
+}
+
+.gs-panel-flash {
+  animation: gs-panel-flash 1s ease;
+}
+
+@keyframes gs-panel-flash {
+  0%, 100% { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15); }
+  30% { box-shadow: 0 0 0 6px rgba(224, 80, 122, 0.35), 0 4px 16px rgba(0, 0, 0, 0.15); }
+}
+
+@media (max-width: 600px) {
+  .gs-panel { width: 200px; right: 10px; bottom: 10px; }
+}
+
+/* メモ入力モーダル（テキスト／手描き） */
+.gs-memo-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 3100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.gs-memo-modal.is-open {
+  display: flex;
+}
+
+.gs-memo-card {
+  width: min(640px, 100%);
+  height: min(560px, 90vh);
+  background: #fff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.gs-memo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.gs-memo-tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.gs-memo-tab {
+  padding: 7px 16px;
+  font-size: 13px;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  background: #f7f7f7;
+  cursor: pointer;
+}
+
+.gs-memo-tab.is-active {
+  background: #2c2c2c;
+  color: #fff;
+  border-color: #2c2c2c;
+}
+
+.gs-memo-close {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: #f2f2f2;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.gs-memo-body {
+  flex: 1;
+  padding: 14px;
+  min-height: 0;
+}
+
+.gs-memo-textarea {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  resize: none;
+  font-family: inherit;
+}
+
+.gs-memo-canvas-wrap {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.gs-memo-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.gs-memo-footer {
+  padding: 10px 14px;
+  border-top: 1px solid #eee;
+  text-align: right;
+}
+
+.gs-memo-footer .gs-panel-btn {
+  flex: none;
+  padding: 8px 16px;
+}
+
+/* 施工事例クリックで拡大表示 */
+.gs-zoomable img {
+  cursor: zoom-in;
+}
+
+.gs-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.gs-lightbox.is-open {
+  display: flex;
+}
+
+.gs-lightbox-img {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.gs-lightbox-caption {
+  color: #fff;
+  font-size: 13px;
+  margin: 14px 0 0;
+  text-align: center;
+}
+
+.gs-lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 3010;
+}
+
+body.gs-lightbox-lock {
+  overflow: hidden;
+}
+
+/* 印刷用シート（画面には表示しない） */
+#gs-print-sheet {
+  display: none;
+}
+
+@media print {
+  body > *:not(#gs-print-sheet) {
+    display: none !important;
+  }
+
+  #gs-print-sheet {
+    display: block !important;
+    position: static;
+    width: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+
+  .gs-print-logo {
+    display: block;
+    height: 28px;
+    width: auto;
+    margin: 0 0 12px;
+  }
+
+  .gs-print-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 4px;
+  }
+
+  .gs-print-meta {
+    font-size: 12px;
+    color: #444;
+    margin: 0 0 20px;
+  }
+
+  .gs-print-group {
+    margin-bottom: 20px;
+    break-inside: avoid;
+  }
+
+  .gs-print-group h2 {
+    font-size: 14px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 4px;
+    margin: 0 0 10px;
+  }
+
+  .gs-print-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .gs-print-card {
+    break-inside: avoid;
+  }
+
+  .gs-print-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 3px;
+    display: block;
+  }
+
+  .gs-print-card p {
+    font-size: 11px;
+    margin: 4px 0 0;
+    color: #222;
+  }
+
+  .gs-print-empty {
+    font-size: 13px;
+    color: #666;
+  }
+}

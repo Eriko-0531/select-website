@@ -1,0 +1,896 @@
+@charset "UTF-8";
+
+/* ============================================================
+   パターン3「ハイエンド・ミニマル」上書きスタイル
+   g-select_sample.css の後に読み込む前提。ここにあるルールだけが
+   pattern3 に効き、index_sample.html / pattern2 には影響しない。
+============================================================ */
+
+body {
+  background: #faf9f6;
+  color: #4a463f;
+  line-height: 2;
+}
+
+main.wrapper {
+  max-width: 1080px;
+  padding-top: 84px;
+}
+
+/* 固定ナビ下段の「G-SELECT」テキストバーは不要なため非表示にし、その分だけ上余白を詰める */
+.sub-nav-bottom {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  main.wrapper {
+    padding-top: 82px;
+  }
+}
+
+section {
+  padding: 60px 24px;
+}
+
+hr.divider-line {
+  margin: 20px auto;
+  background: linear-gradient(90deg, transparent, #cdeae2 50%, transparent);
+}
+
+/* 見出し：装飾バーを外し、セリフ体でゆったり見せる */
+.line-title {
+  border-left: none;
+  padding-left: 0;
+}
+
+.line-title.large {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  color: #2b2b28;
+}
+
+.philosophy-lead {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 500;
+  font-size: 19px;
+  letter-spacing: 0.02em;
+  color: #3a362f;
+  margin-top: 18px;
+}
+
+/* 本文の文字サイズ・色は、出現箇所（section-philosophy / media-row-text）に関わらず統一する。
+   並び方は用途で分ける：写真が横にある場合は左寄せ、写真がない単独の文章はセンター寄せ。 */
+.section-philosophy p,
+.media-row-text p {
+  font-size: 15.5px;
+  line-height: 2.05;
+  color: #6b6558;
+  margin: 0 0 16px;
+}
+
+.section-philosophy p:last-child,
+.media-row-text p:last-child {
+  margin-bottom: 0;
+}
+
+.media-row-text {
+  text-align: left;
+  max-width: none;
+  margin: 0;
+}
+
+.section-philosophy {
+  text-align: center;
+  max-width: 720px;
+  margin: 24px auto 0;
+}
+
+.section-title-center.font-serif {
+  font-size: 30px;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  color: #2b2b28;
+}
+
+.section-lead-center {
+  font-size: 14.5px;
+  line-height: 2;
+  color: #6b6558;
+}
+
+/* 冒頭：G-SELECTの表紙（ロゴ・タグライン・キャッチコピー・メインビジュアル） */
+.hero-cover-section {
+  padding-top: 40px;
+  padding-bottom: 0;
+}
+
+.hero-visual img {
+  border-radius: 2px;
+}
+
+/* 背景写真を使わない表紙ロゴのみ版（写真の代わりにテキストでG-SELECTロゴを再現） */
+.hero-visual--logo-only {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 56px 20px;
+}
+
+.hero-logo-mark {
+  margin: 0;
+  text-align: center;
+}
+
+.hero-logo-title {
+  display: block;
+  font-size: 34px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  padding-left: 0.3em; /* letter-spacingで生じる右余白を打ち消して中央に見せる */
+  color: #3a362f;
+}
+
+.hero-logo-rule {
+  display: block;
+  width: 120px;
+  height: 1px;
+  margin: 18px auto;
+  background: #3a362f;
+}
+
+.hero-logo-sub {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: #6b6558;
+}
+
+@media (min-width: 700px) {
+  .hero-visual--logo-only {
+    padding: 80px 20px;
+  }
+
+  .hero-logo-title {
+    font-size: 44px;
+  }
+
+  .hero-logo-sub {
+    font-size: 15px;
+  }
+}
+
+.hero-cover {
+  max-width: 680px;
+  margin: 0 auto;
+  padding-top: 48px;
+  text-align: center;
+}
+
+.hero-cover .line-title.large {
+  margin: 0;
+  font-size: 28px;
+}
+
+/* 見出しの続きとして、少し小さい文字で流れるように配置する導入文
+   ※上のキャッチコピーに対して印象が薄かったため、文字サイズと下線で存在感を出す */
+.hero-lead-sub {
+  margin: 20px 0 0;
+  font-family: "Noto Serif JP", serif;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  color: #3a362f;
+  text-decoration: underline;
+  text-decoration-color: #98DBCE;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+/* SECTION01とSECTION02の間の余白の中央に、既存の余白量を変えずに配置するロゴマーク */
+/* 上の文章には触れず、下のsection-introの余白（十分にある）だけを使って
+   全体の footprint を相殺する。上方向には決して食い込ませない。 */
+.section-seam-mark {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0 -60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* 表紙のすぐ下：説明本文は別レイヤーとして十分な余白を取って続ける */
+.section-intro {
+  padding-top: 90px;
+  padding-bottom: 40px;
+}
+
+/* タイトルから続く大事な一文なので、見出しと同じ文字サイズで目立たせる */
+.section-intro .intro-emphasis {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #2b2b28;
+  font-size: 28px;
+  margin-bottom: 32px;
+}
+
+/* SECTION同士の橋渡しとなるキーメッセージ：見出しと同格の大きさで目立たせる（見出しより20%小さいサイズに調整） */
+.section-philosophy .bridge-message {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #2b2b28;
+  font-size: 22px;
+  margin-top: 24px;
+}
+
+.section-philosophy--wide {
+  max-width: 920px;
+}
+
+.section-philosophy .bridge-message.bridge-message--underline {
+  text-decoration: underline;
+  text-decoration-color: #98DBCE;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+}
+
+@media (min-width: 1024px) {
+  .hero-cover-section {
+    padding-top: 64px;
+  }
+
+  .hero-cover {
+    padding-top: 64px;
+  }
+
+  .section-intro {
+    padding-top: 120px;
+  }
+}
+
+/* キャッチコピーを1行に収める（表紙全体を1つの区切りに見せるため）
+   ※「ガーデン／エクステリア」表記により文字数が増えたため、幅とサイズを再調整 */
+@media (min-width: 700px) {
+  .hero-cover {
+    max-width: 960px;
+  }
+
+  .hero-cover .line-title.large {
+    font-size: 22px;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  .section-intro .intro-emphasis {
+    font-size: 22px;
+    letter-spacing: 0;
+  }
+
+  .section-philosophy .bridge-message {
+    font-size: 20px;
+    letter-spacing: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-cover .line-title.large {
+    font-size: 24px;
+  }
+
+  .hero-lead-sub {
+    font-size: 19px;
+  }
+
+  .section-intro .intro-emphasis {
+    font-size: 24px;
+  }
+
+  .section-philosophy .bridge-message {
+    font-size: 22px;
+  }
+}
+
+/* 写真を主役に：余白広め、影や角丸を抑えてフラットに見せる */
+.media-row {
+  gap: 90px;
+  padding: 90px 24px;
+  max-width: 1080px;
+}
+
+/* DESIGN / ITEM見出しの直下だけ、上余白を約30%減らす（ITEM側も同じセレクタで自動的に揃う） */
+.section-title-center.font-serif + .media-row,
+.section-title-sublead + .media-row {
+  padding-top: 27px;
+}
+
+/* 見出き＋サブリードの間を半分に詰める（DESIGN・ITEM両方に共通で適用） */
+.section-title-center.font-serif + .section-title-sublead {
+  margin-top: -6px;
+}
+
+/* DESIGN見出し直下のサブリード（TASTE×STORYの一言） */
+.section-title-sublead {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+  color: #8a8478;
+}
+
+.media-row-text,
+.media-row-image {
+  flex: 1 1 0;
+  min-width: 300px;
+}
+
+.media-row-image img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: none;
+}
+
+.philosophy-photo {
+  max-width: 100%;
+  border-radius: 2px;
+  box-shadow: none;
+  margin: 40px auto;
+}
+
+.row-eyebrow {
+  margin-bottom: 22px;
+}
+
+/* 描くカタチから選ぶ／息づく場所から選ぶ：以下の本文に対する「タイトル」として目立たせる。
+   日本語サブタイトルは、少し間隔を空けて同じ行に並べる。 */
+.row-eyebrow .text-green {
+  display: inline;
+  font-family: "Noto Serif JP", serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+}
+
+.row-eyebrow-ja {
+  display: inline;
+  margin-left: 14px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: #8a8478;
+}
+
+/* タグ：塗りつぶしのピルをやめ、線だけの控えめな表現に */
+.design-tags {
+  gap: 12px;
+}
+
+.design-tags .tag-design,
+.design-tags .tag-function,
+.design-tags .tag-quality,
+.design-tags .tag-texture,
+.design-tags .tag-harmony {
+  /* 色付きの丸ピルに戻す（塗りなしの提案は不採用） */
+  color: #6b6558;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  padding: 8px 6px;
+}
+
+/* 「SELECTしてみる」パネル：白カード＋影をやめ、他の文章と同じトーンに溶け込ませる */
+.card-white.style-panel {
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+.subsection-title-center {
+  font-family: "Noto Serif JP", serif;
+  font-size: 21px;
+  font-weight: 500;
+  color: #2b2b28;
+  letter-spacing: 0.03em;
+}
+
+.subsection-title-center.bold {
+  font-weight: 500;
+}
+
+.card-white-header .ja {
+  color: #8a8478;
+}
+
+.card-white-header p {
+  color: #6b6558;
+}
+
+/* TASTE STYLE（10件）を5列×2段にして、STORY STYLE（8件・4列×2段）と段数を揃える。
+   カードの高さは共通のデフォルト（180px）のままなので、パネル全体の高さもほぼ一致する。 */
+.taste-static-grid--compact {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+@media (max-width: 768px) {
+  .taste-static-grid--compact {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .media-row {
+    gap: 110px;
+    padding: 110px 24px;
+  }
+
+  .section-title-center.font-serif + .media-row,
+  .section-title-sublead + .media-row {
+    padding-top: 34px;
+  }
+
+  section {
+    padding: 80px 24px;
+  }
+}
+
+/* ============================================================
+   ▼ DESIGN / ITEM 共通：写真＋本文の非対称レイアウト
+      （写真35〜40% : 中央余白 : 本文30〜35%）
+============================================================ */
+.design-tags {
+  margin-bottom: 56px;
+}
+
+.media-row--design-intro {
+  justify-content: center;
+  gap: 100px;
+}
+
+.media-row--design-intro .media-row-image {
+  flex: 0 1 420px;
+}
+
+.media-row--design-intro .media-row-text {
+  flex: 0 1 380px;
+  min-width: 300px;
+}
+
+@media (max-width: 767px) {
+  .media-row--design-intro .media-row-image,
+  .media-row--design-intro .media-row-text {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   ▼ 「私たちはこう考えています」→「一緒にSELECTしましょう」の場面転換
+============================================================ */
+.section-select {
+  position: relative;
+  background: #f7f5f0;
+  padding: 45px 24px 100px;
+}
+
+.section-select::before {
+  content: "";
+  display: block;
+  width: 28%;
+  max-width: 180px;
+  height: 1px;
+  margin: 0 auto 24px;
+  background: linear-gradient(90deg, transparent, rgba(154, 148, 132, 0.4) 50%, transparent);
+}
+
+.select-heading-block {
+  text-align: center;
+}
+
+/* "SELECT"という単語ではなく、聞く姿勢から一緒に探す姿勢へ切り替わる
+   フェーズ転換を表すアイコンとして見せる（見出し自体は読み上げ用に残す） */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.phase-icon {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 20px;
+}
+
+.select-heading-block .section-philosophy {
+  margin-top: 24px;
+}
+
+.select-heading-block .subsection-title-center {
+  margin-top: 18px;
+}
+
+.select-heading-block .section-lead-center {
+  margin-top: -4px;
+}
+
+/* TASTE STYLE / STORY STYLE：完全に同格な50:50の「2つの入口」ビジュアルカード */
+.select-toggle {
+  display: flex;
+  gap: 20px;
+  max-width: 920px;
+  margin: 56px auto 0;
+}
+
+.select-toggle-btn {
+  position: relative;
+  flex: 1 1 50%;
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 2px;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+}
+
+.select-toggle-media {
+  position: absolute;
+  inset: 0;
+}
+
+.select-toggle-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.select-toggle-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(20, 18, 14, 0.55), rgba(20, 18, 14, 0) 60%);
+  transition: background 0.3s ease;
+  pointer-events: none;
+}
+
+/* 展開する前から中身が伝わる「入口カード」として、写真の左下に文章を直接重ねる */
+.select-toggle-caption {
+  position: absolute;
+  z-index: 2;
+  left: 18px;
+  right: 46px;
+  bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.select-toggle-heading {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.select-toggle-en {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  color: #8fcdbe;
+}
+
+.select-toggle-ja {
+  font-size: 11.5px;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.select-toggle-desc {
+  font-size: 12px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.select-toggle-arrow {
+  position: absolute;
+  z-index: 2;
+  right: 16px;
+  bottom: 14px;
+  font-size: 15px;
+  color: #fff;
+  transition: transform 0.4s ease;
+}
+
+.select-toggle-btn:hover .select-toggle-media img {
+  transform: scale(1.025);
+}
+
+.select-toggle-btn:hover .select-toggle-arrow {
+  transform: translateX(4px);
+}
+
+.select-toggle-btn.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: #8fcdbe;
+  z-index: 3;
+}
+
+.select-panels {
+  margin-top: 48px;
+}
+
+.select-panel[hidden] {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .select-toggle {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .select-toggle-btn {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-select {
+    padding: 60px 24px 130px;
+  }
+
+  .select-toggle-en {
+    font-size: 17px;
+  }
+
+  .select-toggle-desc {
+    font-size: 12.5px;
+  }
+
+  .select-toggle-caption {
+    left: 22px;
+    right: 50px;
+    bottom: 20px;
+  }
+
+  .select-toggle-arrow {
+    right: 20px;
+    bottom: 18px;
+    font-size: 16px;
+  }
+}
+
+/* ============================================================
+   ▼ 施工動画：あとから見る補助コンテンツとして優先度をさらに下げる
+============================================================ */
+.section-video-muted {
+  padding-top: 28px;
+  padding-bottom: 36px;
+}
+
+.section-video-muted .video-lead-link {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.section-video-muted .video-lead-link:hover {
+  opacity: 1;
+}
+
+.section-video-muted .video-lead-text {
+  margin: 0;
+  font-family: "Noto Serif JP", serif;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: #8a8478;
+}
+
+.section-video-muted .slider-container {
+  max-width: 780px;
+  margin: 16px auto 0;
+  filter: saturate(0.85) brightness(0.97);
+}
+
+.section-video-muted .youtube-slide {
+  min-height: 100px;
+}
+
+.section-video-muted .arrow {
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.section-video-muted .dots {
+  margin-top: 10px;
+}
+
+.section-video-muted .dots span {
+  width: 6px;
+  height: 6px;
+}
+
+/* ============================================================
+   ▼ スクロールで各ブロックがふわっと浮き出る表示（scroll-reveal.js と対）
+============================================================ */
+.section-philosophy,
+.media-row,
+.select-heading-block,
+.select-toggle,
+.select-panels,
+.section-select .card-white,
+.section-video-muted {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.section-philosophy.is-visible,
+.media-row.is-visible,
+.select-heading-block.is-visible,
+.select-toggle.is-visible,
+.select-panels.is-visible,
+.section-select .card-white.is-visible,
+.section-video-muted.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-philosophy,
+  .media-row,
+  .select-heading-block,
+  .select-toggle,
+  .select-panels,
+  .section-select .card-white,
+  .section-video-muted {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* 5色の丸：本家サイト（circle-anim.js）と同じ、1つずつ順番にふわっと浮き出る動き */
+.design-tags span {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.design-tags span.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .design-tags span {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ============================================================
+   ▼ 開発用：写真の場所を番号で参照するための一時ラベル
+   （画像を差し替える際の指示出し用。納品前に削除する）
+============================================================ */
+.media-row-image {
+  position: relative;
+}
+
+.dev-img-number {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(43, 43, 40, .85);
+  color: #fff;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ============================================================
+   ▼ シャボン玉の写真：漂う演出を上から重ねる
+============================================================ */
+.media-row-image--bubbles {
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.bubble-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -24px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 28%, rgba(255,255,255,.95), rgba(255,255,255,.18) 55%, rgba(200,230,255,.3) 100%);
+  box-shadow: inset 0 0 3px rgba(255,255,255,.6);
+  opacity: 0;
+  animation-name: bubble-float;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bubble-float {
+  0% { transform: translateY(0) translateX(0) scale(.6); opacity: 0; }
+  12% { opacity: .85; }
+  80% { opacity: .5; }
+  100% { transform: translateY(-220px) translateX(16px) scale(1); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bubble { animation: none; opacity: 0; }
+}
+
+/* ============================================================
+   ▼ 2枚の写真をスライドショーのようにふんわりクロスフェード
+   （門柱の昼/夜、TASTE STYLE、STORY STYLEなど、複数写真がある枠で共通利用）
+============================================================ */
+.media-row-image--fade {
+  position: relative;
+}
+
+.media-row-image--fade .fade-top {
+  position: absolute;
+  inset: 0;
+  animation: fade-crossfade 10s ease-in-out infinite;
+}
+
+@keyframes fade-crossfade {
+  0%, 40% { opacity: 0; }
+  55%, 85% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media-row-image--fade .fade-top { animation: none; opacity: 0; }
+}
+
+/* ============================================================
+   ▼ TASTE STYLE / STORY STYLE カラーコーディング
+   （style_cool.html / style_play_wellness.html の配色トライアルと統一）
+============================================================ */
+.text-taste { color: #6abadc !important; }
+.text-story { color: #f5dfc3 !important; }
+
+.select-toggle-btn--taste .select-toggle-en { color: #6abadc; }
+.select-toggle-btn--story .select-toggle-en { color: #f5dfc3; }
+
+.select-panel--taste .card-white { background: #f2f3f2; }
+.select-panel--story .card-white { background: #faedde; }

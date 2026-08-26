@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SSNYTXJ6WX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SSNYTXJ6WX');
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="暮らしの中から見える景色を楽しむ空間。窓辺やアプローチ、日々目にする風景を一枚の絵のように切り取り、暮らしに取り込みます。" />
+  <link rel="canonical" href="https://www.ground-f.com/image_for_wdp/g-select/product.html" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/png" href="/image_for_wdp/g-select/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/image_for_wdp/g-select/favicon.svg" />
+  <link rel="shortcut icon" href="/image_for_wdp/g-select/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/image_for_wdp/g-select/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="G-SELECT" />
+  <link rel="manifest" href="/image_for_wdp/g-select/site.webmanifest" />
+
+  <meta property="og:title" content="FRAME｜G-SELECT｜グランド工房" />
+  <meta property="og:description" content="暮らしの中から見える景色を楽しむ空間。窓辺やアプローチ、日々目にする風景を一枚の絵のように切り取り、暮らしに取り込みます。" />
+  <meta property="og:url" content="https://www.ground-f.com/image_for_wdp/g-select/product.html" />
+  <meta property="og:image" content="https://www.ground-f.com/file/topimg/thumbnail_main_one.jpg" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="グランド工房" />
+
+  <title>FRAME Place to View｜G-SELECT｜グランド工房</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="g-select_sample.css?v=202607281410">
+  <!-- このページ限定：「こんな方に」レイアウト検証用（確定後に共通CSSへ統合予定） -->
+  <style>
+    .wants-plain { margin-bottom: 40px; }
+    .wants-plain-title { font-size: 15px; font-weight: 500; color: #555; margin: 0 0 12px; }
+    .wants-plain-rule { display: block; width: 36px; height: 1px; background: #ccc; margin-bottom: 24px; }
+    .wants-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px 32px; }
+    .wants-item { padding: 4px 0; }
+    .wants-num { display: flex; align-items: flex-start; gap: 14px; }
+    .wants-num-text { font-size: 20px; font-weight: 300; color: #bbb; letter-spacing: .02em; line-height: 1.7; flex-shrink: 0; }
+    .wants-item-text { font-size: 14px; color: #444; line-height: 1.8; margin: 0; }
+    @media (max-width: 600px) {
+      .wants-grid { grid-template-columns: 1fr; }
+      .case-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* こんな方と／おすすめ空間パーツ／こんな時間：カード化せず罫線区切りに変更（検証用） */
+    .plain-heading { font-size: 15px; font-weight: 500; color: #333; margin: 0 0 20px; }
+    .plain-heading.center { text-align: center; }
+
+    .story-about-row { display: grid; grid-template-columns: 1fr 1fr; padding-top: 30px; border-top: 1px solid #e2ddd5; padding-bottom: 30px; border-bottom: 1px solid #e2ddd5; margin-bottom: 30px; }
+    .story-about-col:first-child { border-right: 1px solid #e2ddd5; padding-right: 40px; }
+    .story-about-col:last-child { padding-left: 40px; }
+
+    .outline-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .outline-tags span { display: inline-block; border: 1px solid #ddd; border-radius: 4px; padding: 10px 22px; font-size: 13px; color: #555; }
+
+    .parts-row { display: flex; flex-wrap: wrap; gap: 24px 28px; }
+    .parts-item { display: flex; flex-direction: column; gap: 4px; }
+    .parts-name { font-size: 13px; font-weight: 500; color: #333; }
+    .time-grid { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; }
+    .time-item { padding: 0 24px; }
+    .time-item:not(:last-child) { border-right: 1px solid #e2ddd5; }
+    .time-icon { display: inline-block; width: 28px; height: 28px; color: #bbb; margin-bottom: 14px; }
+    .time-icon svg { width: 100%; height: 100%; }
+    .time-label { display: block; font-size: 15px; font-weight: 600; color: #333; margin-bottom: 10px; }
+    .time-text { font-size: 13px; color: #777; line-height: 1.8; margin: 0; }
+
+    @media (max-width: 600px) {
+      .story-about-row { grid-template-columns: 1fr; }
+      .story-about-col:first-child { border-right: none; border-bottom: 1px solid #e2ddd5; padding: 0 0 24px; margin-bottom: 24px; }
+      .story-about-col:last-child { padding-left: 0; }
+      .time-grid { grid-template-columns: 1fr; }
+      .time-item { border-right: none !important; padding: 0 0 24px; margin-bottom: 24px; border-bottom: 1px solid #e2ddd5; }
+      .time-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    }
+
+    /* このページ限定：施工事例グリッドを4列×3段に変更（STORY STYLEのみ） */
+    .case-grid { grid-template-columns: repeat(4, 1fr); }
+  
+    /* このページ限定：STORY STYLE 配色テーマ */
+    body { background: linear-gradient(180deg, #f3d7b5 0, #faedde 700px, #faedde 100%); }
+    .style-family-label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .12em; color: #f5dfc3; margin-bottom: 10px; }
+    .style-family-rule { display: block; width: 28px; height: 2px; background: #f5dfc3; margin-bottom: 14px; }
+    .btn-switch.active { background: #f5dfc3; color: #6b4a28; }
+  </style>
+  <!-- JS -->
+  <script src="https://www.ground-f.com/image_for_wdp/g-select/js/slider.js" defer></script>
+  <script src="scroll-reveal.js" defer></script>
+  <link rel="stylesheet" href="favorites.css?v=3">
+</head>
+<body>
+
+  <!-- 固定ヘッダー -->
+    <header>
+    <a href="https://www.ground-f.com/" target="_blank" rel="noopener">
+      <img src="https://www.ground-f.com/assets/images/common/headLogo.svg?20230510" alt="グランド工房 ロゴ画像">
+    </a>
+    <nav>
+      <ul>
+        <li class="small"><a href="https://www.ground-f.com/image_for_wdp/g-select/index.html">HOME |</a></li>
+        <li class="small"><a href="https://www.ground-f.com/image_for_wdp/g-select/product.html#floor">床材 |</a></li>
+        <li class="small"><a href="https://www.ground-f.com/image_for_wdp/g-select/product.html#water">立水栓 |</a></li>
+        <li class="small"><a href="https://www.ground-f.com/image_for_wdp/g-select/product.html#post">ポスト |</a></li>
+        <li class="small"><a href="https://www.ground-f.com/image_for_wdp/g-select/product.html#light">照明 |</a></li>
+        <li class="small"><a href="https://www.ground-f.com/image_for_wdp/g-select/product.html#sign">表札 |</a></li>
+        <li class="small"><a href="https://www.ground-f.com/image_for_wdp/g-select/product.html#grass">人工芝</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Navigation -->
+  <div class="custom-nav-area">
+    <nav class="sub-nav-top">
+      <button class="menu-trigger" id="js-menu-trigger" aria-label="メニューを開閉する">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="sub-nav-top-list" id="js-menu-list">
+        <li class="current"><a href="https://www.ground-f.com/image_for_wdp/g-select/index.html">【現行G-SELECTサイト】</a></li>
+        <li><a href="taste_style.html">Taste Style</a></li>
+        <li><a href="story_style.html">Story Style</a></li>
+        <li><a href="product_sample.html">Select Item</a></li>
+      </ul>
+    </nav>
+
+    <nav class="sub-nav-bottom">
+      <div class="nav-bottom-inner">
+        <a href="https://www.ground-f.com/image_for_wdp/g-select/index.html" class="nav-bottom-left">G-SELECT</a>
+        <div class="nav-bottom-right">
+          <a href="taste_style.html" class="btn-switch">Taste Style</a>
+          <a href="#" class="btn-switch active">Story Style</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <main class="wrapper">
+
+    <!-- ヒーローエリア -->
+    <section class="style-hero" style="background-image: url('images/story/frame/01.jpg');">
+      <div class="style-hero-content">
+        <span class="style-family-label">STORY STYLE</span>
+        <span class="style-family-rule"></span>
+        <span class="section-sub-en" style="font-size: 44px; margin-bottom: 8px; color: #e9b779;">FRAME</span>
+        <h1 class="font-serif" style="font-size: 16px; font-weight: 500; letter-spacing: .04em;">Place to View</h1>
+        <p>
+          暮らしの中から見える景色を楽しむ空間。窓辺やアプローチ、日々目にする風景を一枚の絵のように切り取り、暮らしに取り込みます。
+        </p>
+      </div>
+    </section>
+
+    <!-- 施工事例セクション -->
+    <section>
+      <h2 class="detail-title">施工事例</h2>
+      <div class="case-grid">
+        <div class="case-item"
+             data-gs-fav
+             data-gs-title="FRAME 施工事例 01"
+             data-gs-category="STORY STYLE / FRAME"><img src="images/story/frame/01.jpg" alt="施工事例 1" loading="lazy"></div>
+        <div class="case-item"
+             data-gs-fav
+             data-gs-title="FRAME 施工事例 02"
+             data-gs-category="STORY STYLE / FRAME"><img src="images/story/frame/02.jpg" alt="施工事例 2" loading="lazy"></div>
+        <div class="case-item"
+             data-gs-fav
+             data-gs-title="FRAME 施工事例 03"
+             data-gs-category="STORY STYLE / FRAME"><img src="images/story/frame/03.jpg" alt="施工事例 3" loading="lazy"></div>
+        <div class="case-item"
+             data-gs-fav
+             data-gs-title="FRAME 施工事例 04"
+             data-gs-category="STORY STYLE / FRAME"><img src="images/story/frame/04.jpg" alt="施工事例 4" loading="lazy"></div>
+        <div class="case-item"
+             data-gs-fav
+             data-gs-title="FRAME 施工事例 05"
+             data-gs-category="STORY STYLE / FRAME"><img src="images/story/frame/05.jpg" alt="施工事例 5" loading="lazy"></div>
+        <div class="case-item"
+             data-gs-fav
+             data-gs-title="FRAME 施工事例 06"
+             data-gs-category="STORY STYLE / FRAME"><img src="images/story/frame/06.jpg" alt="施工事例 6" loading="lazy"></div>
+        <div class="case-item"
+             data-gs-fav
+             data-gs-title="FRAME 施工事例 07"
+             data-gs-category="STORY STYLE / FRAME"><img src="images/story/frame/07.jpg" alt="施工事例 7" loading="lazy"></div>
+        <div class="case-item"
+             data-gs-fav
+             data-gs-title="FRAME 施工事例 08"
+             data-gs-category="STORY STYLE / FRAME"><img src="images/story/frame/08.jpg" alt="施工事例 8" loading="lazy"></div>
+        <div class="case-item"
+             data-gs-fav
+             data-gs-title="FRAME 施工事例 09"
+             data-gs-category="STORY STYLE / FRAME"><img src="images/story/frame/09.jpg" alt="施工事例 9" loading="lazy"></div>
+        <div class="case-item"
+             data-gs-fav
+             data-gs-title="FRAME 施工事例 10"
+             data-gs-category="STORY STYLE / FRAME"><img src="images/story/frame/10.jpg" alt="施工事例 10" loading="lazy"></div>
+        <div class="case-item"
+             data-gs-fav
+             data-gs-title="FRAME 施工事例 11"
+             data-gs-category="STORY STYLE / FRAME"><img src="images/story/frame/11.jpg" alt="施工事例 11" loading="lazy"></div>
+        <div class="case-item"
+             data-gs-fav
+             data-gs-title="FRAME 施工事例 12"
+             data-gs-category="STORY STYLE / FRAME"><img src="images/story/frame/12.jpg" alt="施工事例 12" loading="lazy"></div>
+      </div>
+    </section>
+
+    <!-- このスタイルについてセクション -->
+    <section>
+      <h2 class="detail-title">このスタイルについて</h2>
+
+      <!-- こんな方に（カード化せず、番号+罫線のレイアウトに変更） -->
+      <div class="wants-plain reveal-block">
+        <p class="wants-plain-title">こんな方に</p>
+        <span class="wants-plain-rule"></span>
+        <div class="wants-grid">
+          <div class="wants-item">
+            <div class="wants-num">
+              <span class="wants-num-text">01</span>
+              <p class="wants-item-text">窓から見える景色にもこだわりたい</p>
+            </div>
+          </div>
+          <div class="wants-item">
+            <div class="wants-num">
+              <span class="wants-num-text">02</span>
+              <p class="wants-item-text">日常の景色を、美しく切り取って楽しみたい</p>
+            </div>
+          </div>
+          <div class="wants-item">
+            <div class="wants-num">
+              <span class="wants-num-text">03</span>
+              <p class="wants-item-text">季節や時間によって変わる景色を楽しみたい</p>
+            </div>
+          </div>
+          <div class="wants-item">
+            <div class="wants-num">
+              <span class="wants-num-text">04</span>
+              <p class="wants-item-text">ふと目に入る景色に癒されたい</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- こんな方と／おすすめ空間パーツ：カード化せず罫線区切りの2列に変更 -->
+      <div class="story-about-row reveal-block">
+        <div class="story-about-col">
+          <h3 class="plain-heading">こんな方と</h3>
+          <div class="outline-tags"><span>一人で</span><span>ご夫婦で</span><span>ご家族で</span></div>
+        </div>
+
+        <div class="story-about-col">
+          <h3 class="plain-heading">おすすめ空間パーツ</h3>
+          <div class="parts-row">
+            <div class="parts-item"><span class="parts-name">デザインウォール</span></div>
+            <div class="parts-item"><span class="parts-name">シンボルツリー</span></div>
+            <div class="parts-item"><span class="parts-name">ライト</span></div>
+            <div class="parts-item"><span class="parts-name">スクリーン</span></div>
+            <div class="parts-item"><span class="parts-name">オブジェ</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- こんな時間：控えめなアイコン付き、罫線区切りの3列 -->
+      <div class="reveal-block">
+        <h3 class="plain-heading center">こんな時間</h3>
+        <div class="time-grid">
+          <div class="time-item">
+            <span class="time-icon">
+              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M12 24a8 8 0 0 1 16 0"/><line x1="4" y1="24" x2="36" y2="24"/><line x1="20" y1="10" x2="20" y2="14"/><line x1="9" y1="15" x2="12" y2="18"/><line x1="31" y1="15" x2="28" y2="18"/></svg>
+            </span>
+            <span class="time-label">朝</span>
+            <p class="time-text">窓の向こうに広がる景色が、一日の始まりを心地よく彩る。</p>
+          </div>
+          <div class="time-item">
+            <span class="time-icon">
+              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M24 10a11 11 0 1 0 8 18 9 9 0 0 1-8-18z"/><path d="M30 12l1.2 2.6L34 16l-2.8 1.4L30 20l-1.2-2.6L26 16l2.8-1.4z" stroke-width="1"/></svg>
+            </span>
+            <span class="time-label">夜</span>
+            <p class="time-text">ライトアップされた植栽や壁面が、美しいシルエットを描き出す。</p>
+          </div>
+          <div class="time-item">
+            <span class="time-icon">
+              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 28C10 18 16 10 26 8c2 10-4 18-14 20z"/><path d="M12 28c4-6 8-10 14-14"/></svg>
+            </span>
+            <span class="time-label">四季</span>
+            <p class="time-text">季節ごとに変わる表情が、まるで一枚の絵のように映し出される。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- 他スタイルへのリンクナビゲーション (7項目) -->
+    <section>
+      <h2 class="detail-title">他のスタイルを見る</h2>
+
+      <div class="style-link-grid">
+        <a href="style_relax.html" class="pattern-box-img" style="background-image: url('images/story/relax/01.jpg');">
+          <div class="pattern-box-inner">
+            <h4>RELAX</h4>
+          </div>
+        </a>
+
+        <a href="style_green.html" class="pattern-box-img" style="background-image: url('images/story/green/01.jpg');">
+          <div class="pattern-box-inner">
+            <h4>GREEN</h4>
+          </div>
+        </a>
+
+        <a href="style_night.html" class="pattern-box-img" style="background-image: url('images/story/night/01.jpg');">
+          <div class="pattern-box-inner">
+            <h4>NIGHT</h4>
+          </div>
+        </a>
+
+        <a href="style_cafe.html" class="pattern-box-img" style="background-image: url('images/story/cafe/01.jpg');">
+          <div class="pattern-box-inner">
+            <h4>CAFE</h4>
+          </div>
+        </a>
+
+        <a href="style_gather.html" class="pattern-box-img" style="background-image: url('images/story/gather/01.jpg');">
+          <div class="pattern-box-inner">
+            <h4>GATHER</h4>
+          </div>
+        </a>
+
+        <a href="style_hobby.html" class="pattern-box-img" style="background-image: url('images/story/hobby/01.jpg');">
+          <div class="pattern-box-inner">
+            <h4>HOBBY</h4>
+          </div>
+        </a>
+
+        <a href="style_play_wellness.html" class="pattern-box-img" style="background-image: url('images/story/play_wellness/01.jpg');">
+          <div class="pattern-box-inner">
+            <h4>PLAY &amp; WELLNESS</h4>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <a href="https://www.ground-f.com/image_for_wdp/g-select/index.html">
+      <img src="https://www.ground-f.com/image_for_wdp/g-select/images/GF_logo_tate_RGB.jpg" alt="グランド工房ロゴ" class="footer-logo">
+    </a>
+
+    <div class="footer-sns">
+      <a href="https://www.instagram.com/ground_kobo/" target="_blank" rel="noopener">
+        <img src="https://www.ground-f.com/image_for_wdp/g-select/images/sns_instagram.jpg" alt="Instagram">
+      </a>
+      <a href="https://www.facebook.com/groundkobo/" target="_blank" rel="noopener">
+        <img src="https://www.ground-f.com/image_for_wdp/g-select/images/sns_facebook.jpg" alt="Facebook">
+      </a>
+      <a href="https://www.ground-f.com/line/" target="_blank" rel="noopener">
+        <img src="https://www.ground-f.com/image_for_wdp/g-select/images/sns_line.jpg" alt="LINE">
+      </a>
+      <a href="https://www.youtube.com/user/2000grf" target="_blank" rel="noopener">
+        <img src="https://www.ground-f.com/image_for_wdp/g-select/images/sns_youtube.jpg" alt="YouTube">
+      </a>
+    </div>
+
+    <p class="copyright">
+      Copyright © GREEN LIFE INDUSTRY CO., LTD. Allrights reserved.
+    </p>
+  </footer>
+
+  <script src="custom-nav.js" defer></script>
+<script src="favorites.js?v=4"></script>
+</body>
+</html>

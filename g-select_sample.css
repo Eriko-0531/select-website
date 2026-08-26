@@ -245,11 +245,13 @@ section {
 
 /* G-SELECT 全体のフィロソフィ（母体メッセージ）を強調 */
 .philosophy-lead {
+  max-width: 720px;
+  margin: 8px auto 0;
+  text-align: center;
   font-size: 18px;
   font-weight: 700;
   color: #333;
   letter-spacing: .02em;
-  margin-top: 8px;
 }
 
 /* 各セクション（G-SELECT DESIGN / ITEM）のフィロソフィ文。前の要素とのmargin相殺でDESIGN/ITEM双方の余白を揃える */
@@ -267,8 +269,82 @@ section {
   margin-bottom: 0;
 }
 
+/* 長文の合間に挟む写真。商談中にスクロールを止めて話すきっかけにする */
+.philosophy-photo {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  margin: 24px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
 /* 特定の語句が行末で分断されないようにする */
 .nowrap { white-space: nowrap; }
+
+/* ============================================================
+   ▼ 画像と文章を横並びにする、余白をたっぷり取ったレイアウト
+============================================================ */
+.media-row {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.media-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.media-row-text,
+.media-row-image {
+  flex: 1 1 360px;
+}
+
+.media-row-text p {
+  margin: 0 0 16px;
+}
+
+.media-row-text p:last-child {
+  margin-bottom: 0;
+}
+
+.media-row-text .philosophy-lead {
+  max-width: none;
+  margin: 8px 0 16px;
+  text-align: left;
+}
+
+.media-row-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+/* 横並びブロックの見出し代わりの小ラベル（TASTE STYLE / STORY STYLE など） */
+.row-eyebrow {
+  margin: 0 0 12px;
+  font-size: 15px;
+}
+
+.row-eyebrow .row-eyebrow-ja {
+  margin-left: 8px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #888;
+}
+
+@media (max-width: 767px) {
+  .media-row,
+  .media-row.reverse {
+    flex-direction: column;
+    gap: 28px;
+    padding: 40px 15px;
+  }
+}
 
 hr.divider-line {
   border: none;
@@ -333,6 +409,13 @@ hr.divider-line {
   font-size: 14px;
   line-height: 1.8;
   color: #777;
+}
+
+/* 長文ブロックの幅を全ページで統一するための共通クラス */
+.text-col {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ============================================================
@@ -586,7 +669,7 @@ hr.divider-line {
 .detail-title { display: flex; align-items: center; gap: 15px; font-size: 16px; font-weight: 500; color: #666; margin: 0 0 20px; }
 .detail-title::after { content: ""; flex: 1; height: 1px; background: #e2ddd5; }
 
-.case-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 40px; }
+.case-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 40px; }
 .case-item { overflow: hidden; aspect-ratio: 4 / 3; border-radius: 4px; }
 .case-item img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -943,4 +1026,26 @@ hr.divider-line {
   }
   .style-link-grid .pattern-box-img { height: 65px; }
   .style-link-grid .pattern-box-inner h4 { font-size: 11px; }
+}
+
+/* ============================================================
+   ▼ スクロールでふわっと浮き出る表示（scroll-reveal.js と対、汎用クラス）
+============================================================ */
+.reveal-block {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal-block.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-block {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
