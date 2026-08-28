@@ -61,6 +61,7 @@
       '    <button type="button" class="gs-panel-btn" id="gs-panel-clear">クリア</button>' +
       '    <button type="button" class="gs-panel-btn gs-panel-btn--primary" id="gs-panel-output">記録を出力（PDF）</button>' +
       "  </div>" +
+      '  <a class="gs-panel-sublink" href="https://preview.studio.site/live/4Ra4bgXROD/#top" target="_blank" rel="noopener">Approach Book</a>' +
       "</div>";
     document.body.appendChild(panel);
 

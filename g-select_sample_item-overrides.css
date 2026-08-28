@@ -231,98 +231,33 @@
 }
 
 /* ============================================================
-   ▼ ギャラリーモーダル
+   ▼ カテゴリー見出し（バナー画像を用意していない新カテゴリー用）
 ============================================================ */
-.gallery-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
-  display: none;
-  z-index: 9999;
-  padding: 30px 10px;
-}
-
-.gallery-content {
-  max-width: 900px;
-  margin: auto;
+.category-heading {
   text-align: center;
-  position: relative; /* ← これが無いと矢印は迷子になる */
+  font-size: 22px;
+  font-weight: 700;
+  color: #3a362f;
+  letter-spacing: .04em;
+  padding: 24px 0 4px;
+  margin: 0;
 }
 
-.gallery-close {
-  position: absolute;
-  top: -10px;
-  right: 0;
-  font-size: 40px;
-  color: #fff;
-  cursor: pointer;
+/* ============================================================
+   ▼ 準備中プレースホルダー（商品未登録のカテゴリー）
+============================================================ */
+.slider-container.coming-soon {
+  max-width: 1000px;
+  margin: 20px auto 40px;
+  padding: 50px 20px;
+  text-align: center;
+  background: #f7f6f3;
+  border-radius: 12px;
 }
 
-.gallery-main-img {
-  max-height: 70vh;
-  object-fit: contain;
-  border-radius: 8px;
-}
-
-/* サムネイル */
-.gallery-thumbs {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding: 15px 0;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* サムネイル枠を固定 */
-.gallery-thumbs img {
-  width: 150px;
-  height: 90px;                /* ← 高さを固定 */
-  background: #000;            /* 黒背景 */
-  object-fit: contain;         /* 画像全体を収める */
-  border-radius: 6px;
-  opacity: 0.6;
-  cursor: pointer;
-}
-
-/* サムネイル アクティブ時 */
-.gallery-thumbs img.active {
-  opacity: 1;
-  border: 2px solid #7CCFC0;
-}
-
-.gallery-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  background: rgba(0,0,0,0.45);
-  color: #fff;
-  font-size: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  cursor: pointer;
-  user-select: none;
-  z-index: 10;
-}
-
-.gallery-arrow.left {
-  left: 10px;
-}
-
-.gallery-arrow.right {
-  right: 10px;
-}
-
-/* ギャラリー キャプション */
-.gallery-caption {
-  color: #fff;                 /* 完全な白文字 */
-  background: rgba(0,0,0,0.6); /* 黒背景（文字は透過しない） */
-  padding: 8px 14px;
-  margin-top: 10px;
-  border-radius: 6px;
-  font-size: 14px;
-  line-height: 1.6;
+.coming-soon-text {
+  margin: 0;
+  font-size: 15px;
+  letter-spacing: .1em;
+  color: #999;
 }
