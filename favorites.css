@@ -137,10 +137,10 @@
 .gs-panel-sublink {
   display: block;
   margin-top: 2px;
-  padding: 2px 0;
+  padding: 2px 4px 2px 0;
   font-size: 10.5px;
   color: #aaa;
-  text-align: center;
+  text-align: right;
   text-decoration: none;
 }
 
