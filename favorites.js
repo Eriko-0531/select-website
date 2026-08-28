@@ -313,7 +313,11 @@
     targets.forEach(function (el) {
       var img = el.querySelector("img");
 
-      if (img && !el.__gsLightboxBound) {
+      // SELECT ITEM の「施工例を見る」ギャラリー付きカードは独自のクリックでモーダルを開くため、
+      // ここでの拡大表示（gs-lightbox）は付けない（二重にモーダルが開くのを防ぐ）
+      var hasOwnGallery = !!el.closest("[data-gallery]");
+
+      if (img && !hasOwnGallery && !el.__gsLightboxBound) {
         el.__gsLightboxBound = true;
         el.classList.add("gs-zoomable");
         el.addEventListener("click", function () {
@@ -362,6 +366,13 @@
 
         saveState(state);
         updateCount(state);
+
+        if (typeof gtag === "function") {
+          gtag("event", isActive ? "favorite_add" : "favorite_remove", {
+            item_title: el.getAttribute("data-gs-title") || "",
+            item_category: el.getAttribute("data-gs-category") || ""
+          });
+        }
       });
 
       el.appendChild(btn);
@@ -454,6 +465,13 @@
       if (typeof window.print !== "function") {
         alert("この端末・ブラウザでは印刷機能を利用できません。");
         return;
+      }
+
+      if (typeof gtag === "function") {
+        gtag("event", "pdf_export", {
+          item_count: count,
+          has_memo: !!(state.memoText || state.memoDrawing)
+        });
       }
 
       var printStarted = false;
