@@ -6,8 +6,11 @@
   var HEART_SVG =
     '<svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-10.2-9.2C.3 8.6 1.4 5 4.9 4.1c2.1-.5 4.2.4 5.4 2.2l1.7 2.5 1.7-2.5c1.2-1.8 3.3-2.7 5.4-2.2 3.5.9 4.6 4.5 3.1 7.2C19.5 15.9 12 20.5 12 20.5z"/></svg>';
 
+  /* ブランドカラー3色（グランド工房ブランドマニュアル準拠：オレンジ=156C、グリーン=サイト共通の.text-green、ブラック=K85%濃色） */
+  var MEMO_COLORS = { black: "#4b4848", orange: "#e9b779", green: "#98DBCE" };
+
   function defaultState() {
-    return { customerName: "", items: {}, memoText: "", memoDrawing: "" };
+    return { customerName: "", items: {}, memoText: "", memoDrawing: "", memoTextColor: "black", memoDrawColor: "black" };
   }
 
   function loadState() {
@@ -20,6 +23,8 @@
       if (typeof parsed.customerName !== "string") parsed.customerName = "";
       if (typeof parsed.memoText !== "string") parsed.memoText = "";
       if (typeof parsed.memoDrawing !== "string") parsed.memoDrawing = "";
+      if (!MEMO_COLORS[parsed.memoTextColor]) parsed.memoTextColor = "black";
+      if (!MEMO_COLORS[parsed.memoDrawColor]) parsed.memoDrawColor = "black";
       return parsed;
     } catch (e) {
       return defaultState();
@@ -153,6 +158,14 @@
       '    <button type="button" class="gs-memo-close" aria-label="閉じる">&times;</button>' +
       "  </div>" +
       '  <div class="gs-memo-body">' +
+      '    <div class="gs-memo-toolbar" id="gs-memo-toolbar">' +
+      '      <div class="gs-memo-colors" id="gs-memo-colors">' +
+      '        <button type="button" class="gs-memo-color-btn" data-color="black" style="--gs-swatch:' + MEMO_COLORS.black + '" aria-label="ブラック"></button>' +
+      '        <button type="button" class="gs-memo-color-btn" data-color="orange" style="--gs-swatch:' + MEMO_COLORS.orange + '" aria-label="オレンジ"></button>' +
+      '        <button type="button" class="gs-memo-color-btn" data-color="green" style="--gs-swatch:' + MEMO_COLORS.green + '" aria-label="グリーン"></button>' +
+      "      </div>" +
+      '      <button type="button" class="gs-memo-eraser-btn" id="gs-memo-eraser" aria-pressed="false">消しゴム</button>' +
+      "    </div>" +
       '    <textarea class="gs-memo-textarea" id="gs-memo-textarea" placeholder="商談メモを入力"></textarea>' +
       '    <div class="gs-memo-canvas-wrap" id="gs-memo-canvas-wrap">' +
       '      <canvas class="gs-memo-canvas" id="gs-memo-canvas"></canvas>' +
@@ -169,11 +182,52 @@
     var canvas = overlay.querySelector("#gs-memo-canvas");
     var ctx = canvas.getContext("2d");
     var tabs = overlay.querySelectorAll(".gs-memo-tab");
+    var colorButtons = overlay.querySelectorAll(".gs-memo-color-btn");
+    var eraserBtn = overlay.querySelector("#gs-memo-eraser");
     var currentMode = "text";
     var drawing = false;
+    var isErasing = false;
     var lastX = 0;
     var lastY = 0;
     var canvasReady = false;
+
+    function applyTextColor() {
+      textarea.style.color = MEMO_COLORS[state.memoTextColor] || MEMO_COLORS.black;
+    }
+
+    function updateColorSwatches() {
+      var active = currentMode === "draw" ? state.memoDrawColor : state.memoTextColor;
+      colorButtons.forEach(function (btn) {
+        btn.classList.toggle("is-active", btn.getAttribute("data-color") === active);
+      });
+    }
+
+    function setEraser(on) {
+      isErasing = on;
+      eraserBtn.classList.toggle("is-active", on);
+      eraserBtn.setAttribute("aria-pressed", on ? "true" : "false");
+      if (canvasReady) ctx.globalCompositeOperation = on ? "destination-out" : "source-over";
+    }
+
+    colorButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var key = btn.getAttribute("data-color");
+        if (currentMode === "draw") {
+          state.memoDrawColor = key;
+          if (canvasReady) ctx.strokeStyle = MEMO_COLORS[key];
+          setEraser(false);
+        } else {
+          state.memoTextColor = key;
+          applyTextColor();
+        }
+        saveState(state);
+        updateColorSwatches();
+      });
+    });
+
+    eraserBtn.addEventListener("click", function () {
+      setEraser(!isErasing);
+    });
 
     function loadDrawingIntoCanvas() {
       var ratio = window.devicePixelRatio || 1;
@@ -202,8 +256,9 @@
       ctx.scale(ratio, ratio);
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
-      ctx.strokeStyle = "#222";
+      ctx.strokeStyle = MEMO_COLORS[state.memoDrawColor] || MEMO_COLORS.black;
       ctx.lineWidth = 2.5;
+      ctx.globalCompositeOperation = isErasing ? "destination-out" : "source-over";
       canvasReady = true;
       loadDrawingIntoCanvas();
     }
@@ -215,6 +270,8 @@
       });
       textarea.style.display = mode === "text" ? "block" : "none";
       canvasWrap.style.display = mode === "draw" ? "block" : "none";
+      eraserBtn.style.display = mode === "draw" ? "inline-flex" : "none";
+      updateColorSwatches();
       if (mode === "draw") setupCanvas();
     }
 
@@ -297,6 +354,8 @@
     return {
       open: function () {
         textarea.value = state.memoText || "";
+        applyTextColor();
+        setEraser(false);
         setMode("text");
         overlay.classList.add("is-open");
         refreshBodyLock();
@@ -425,7 +484,12 @@
       html += '<div class="gs-print-memo">';
       html += "<h2>メモ</h2>";
       if (state.memoText) {
-        html += '<p class="gs-print-memo-text">' + escapeHtml(state.memoText).replace(/\n/g, "<br>") + "</p>";
+        html +=
+          '<p class="gs-print-memo-text" style="color:' +
+          (MEMO_COLORS[state.memoTextColor] || MEMO_COLORS.black) +
+          '">' +
+          escapeHtml(state.memoText).replace(/\n/g, "<br>") +
+          "</p>";
       }
       if (state.memoDrawing) {
         html += '<img class="gs-print-memo-drawing" src="' + state.memoDrawing + '" alt="手描きメモ">';
