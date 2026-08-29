@@ -8,6 +8,8 @@
 
   /* ブランドカラー3色（グランド工房ブランドマニュアル準拠：オレンジ=156C、グリーン=サイト共通の.text-green、ブラック=K85%濃色） */
   var MEMO_COLORS = { black: "#4b4848", orange: "#e9b779", green: "#98DBCE" };
+  var PEN_WIDTH = 2.5;
+  var ERASER_WIDTH = 22;
 
   function defaultState() {
     return { customerName: "", items: {}, memoText: "", memoDrawing: "", memoTextColor: "black", memoDrawColor: "black" };
@@ -206,7 +208,10 @@
       isErasing = on;
       eraserBtn.classList.toggle("is-active", on);
       eraserBtn.setAttribute("aria-pressed", on ? "true" : "false");
-      if (canvasReady) ctx.globalCompositeOperation = on ? "destination-out" : "source-over";
+      if (canvasReady) {
+        ctx.globalCompositeOperation = on ? "destination-out" : "source-over";
+        ctx.lineWidth = on ? ERASER_WIDTH : PEN_WIDTH;
+      }
     }
 
     colorButtons.forEach(function (btn) {
@@ -257,7 +262,7 @@
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
       ctx.strokeStyle = MEMO_COLORS[state.memoDrawColor] || MEMO_COLORS.black;
-      ctx.lineWidth = 2.5;
+      ctx.lineWidth = isErasing ? ERASER_WIDTH : PEN_WIDTH;
       ctx.globalCompositeOperation = isErasing ? "destination-out" : "source-over";
       canvasReady = true;
       loadDrawingIntoCanvas();
