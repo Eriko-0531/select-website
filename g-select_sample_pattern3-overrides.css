@@ -558,7 +558,7 @@ hr.divider-line {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(20, 18, 14, 0.55), rgba(20, 18, 14, 0) 60%);
+  background: linear-gradient(to top, rgba(20, 18, 14, 0.65), rgba(20, 18, 14, 0) 65%);
   transition: background 0.3s ease;
   pointer-events: none;
 }
@@ -576,33 +576,35 @@ hr.divider-line {
 }
 
 .select-toggle-heading {
-  display: inline-flex;
+  display: flex;
   align-items: baseline;
   flex-wrap: wrap;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.5);
-  padding: 6px 12px;
-  border-radius: 4px;
 }
 
 .select-toggle-en {
   font-family: "Noto Serif JP", serif;
   font-weight: 700;
-  font-size: 32px;
+  font-size: 22px;
   letter-spacing: 0.04em;
-  color: #2f6b5c;
+  color: #8fcdbe;
+  text-shadow: 0 1px 4px rgba(20, 18, 14, 0.7);
 }
 
 .select-toggle-ja {
-  font-size: 23px;
+  font-size: 16px;
+  font-weight: 500;
   letter-spacing: 0.05em;
-  color: rgba(43, 43, 40, 0.75);
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 3px rgba(20, 18, 14, 0.6);
 }
 
 .select-toggle-desc {
   font-size: 12px;
+  font-weight: 500;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 3px rgba(20, 18, 14, 0.55);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -662,7 +664,7 @@ hr.divider-line {
   }
 
   .select-toggle-en {
-    font-size: 34px;
+    font-size: 24px;
   }
 
   .select-toggle-desc {
@@ -889,29 +891,26 @@ hr.divider-line {
    ▼ TASTE STYLE / STORY STYLE カラーコーディング
    （style_cool.html / style_play_wellness.html の配色トライアルと統一）
 ============================================================ */
-.text-taste { color: #6abadc !important; }
-.text-story { color: #f5dfc3 !important; }
+/* 白い背景の上でも読めるよう、写真オーバーレイ用の薄い色より濃いトーンを使用 */
+.text-taste { color: #1f6f95 !important; }
+.text-story { color: #6b4a28 !important; }
 
-/* 白背景の見出しラベル上で読めるよう、通常のTASTE/STORYアクセントより濃い色を使用 */
-.select-toggle-btn--taste .select-toggle-en { color: #2b6a86; }
-.select-toggle-btn--story .select-toggle-en { color: #6b4a28; }
+.select-toggle-btn--taste .select-toggle-en { color: #6abadc; }
+.select-toggle-btn--story .select-toggle-en { color: #f5dfc3; }
 
-/* カテゴリー名（RELAX/GREEN/COOL等）を目立たせる：2倍サイズ＋白50%の背景ラベル */
+/* カテゴリー名（RELAX/GREEN/COOL等）を目立たせる：太字＋ドロップシャドウで写真に直接乗せる */
 .mini-card-content h4 {
-  display: inline-block;
-  padding: 3px 10px;
-  font-size: 30px;
-  color: #2b2b28;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 4px;
+  font-size: 21px;
+  font-weight: 700;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* モバイル（2列表示）では、PLAY & WELLNESS等の長い名前がカードからはみ出さないよう縮小 */
-@media (max-width: 600px) {
-  .mini-card-content h4 {
-    font-size: 20px;
-    padding: 2px 8px;
-  }
+.mini-card-content p,
+.mini-card-content .ja-text {
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  /* 説明文の行数（1〜2行）に関わらずタイトルの位置が揃うよう、2行分の高さを確保 */
+  min-height: 2.8em;
 }
 
 .select-panel--taste .card-white { background: #f2f3f2; }
