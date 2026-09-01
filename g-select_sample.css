@@ -642,10 +642,15 @@ hr.divider-line {
 .daily-item:hover .card-img-wrapper img { transform: scale(1.05); }
 .daily-item::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.8), rgba(0,0,0,.25) 60%, transparent); z-index: 1; }
 .daily-item-overlay { position: relative; z-index: 2; padding: 15px; }
-.daily-item-overlay h4 { margin: 0; font-size: 15px; line-height: 1.2; }
+.daily-item-overlay h4 { margin: 0; font-size: 21px; font-weight: 700; line-height: 1.2; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); }
 .daily-item-overlay p { margin: 5px 0 0; font-size: 10px; opacity: .9; line-height: 1.4; }
 
 .unique-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 10px; }
+
+/* 一覧ページのUNIQUE STYLEカード：英語名を大きく見せるため高さを拡大（.style-link-grid側は個別に上書き済みのため影響なし） */
+.unique-grid .pattern-box-img { height: 180px; }
+.unique-grid .pattern-box-inner h4 { margin: 0 0 4px; font-size: 21px; font-weight: 700; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); }
+.unique-grid .pattern-box-inner p { font-size: 11.5px; }
 
 .story-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .story-card-item { position: relative; display: flex; flex-direction: column; justify-content: flex-end; height: 280px; padding: 20px; border-radius: 8px; overflow: hidden; color: #fff; text-decoration: none; background-size: cover; background-position: center; transition: transform 0.2s, box-shadow 0.2s; }
