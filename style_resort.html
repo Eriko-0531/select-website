@@ -34,7 +34,7 @@
   <title>RESORT リゾート｜G-SELECT｜グランド工房</title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="g-select_sample.css?v=202607281410">
+  <link rel="stylesheet" href="g-select_sample.css?v=202609015">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -61,6 +61,7 @@
   <!-- JS -->
   <script src="https://www.ground-f.com/image_for_wdp/g-select/js/slider.js" defer></script>
   <script src="scroll-reveal.js" defer></script>
+  <script src="style-link-slider.js?v=1" defer></script>
   <link rel="stylesheet" href="favorites.css?v=8">
 </head>
 <body>
@@ -257,60 +258,80 @@
     <section>
       <h2 class="detail-title">他のスタイルを見る</h2>
 
-      <div class="style-link-grid">
-        <a href="style_cool.html" class="pattern-box-img" style="background-image: url('images/taste/cool/01.jpg');">
-          <div class="pattern-box-inner">
-            <h4>COOL</h4>
-          </div>
-        </a>
-
-        <a href="style_natural_cool.html" class="pattern-box-img" style="background-image: url('images/taste/natural_cool/01.jpg');">
-          <div class="pattern-box-inner">
-            <h4>NATURAL COOL</h4>
-          </div>
-        </a>
-
-        <a href="style_natural_warm.html" class="pattern-box-img" style="background-image: url('images/taste/natural_warm/01.jpg');">
-          <div class="pattern-box-inner">
-            <h4>NATURAL WARM</h4>
-          </div>
-        </a>
-
-        <a href="style_cute.html" class="pattern-box-img" style="background-image: url('images/taste/cute/01.jpg');">
-          <div class="pattern-box-inner">
-            <h4>CUTE</h4>
-          </div>
-        </a>
-
-        <a href="style_hotel.html" class="pattern-box-img" style="background-image: url('images/taste/hotel/01.jpg');">
-          <div class="pattern-box-inner">
-            <h4>HOTEL LIKE</h4>
-          </div>
-        </a>
-
-        <a href="style_botanical.html" class="pattern-box-img" style="background-image: url('images/taste/botanical/01.jpg');">
-          <div class="pattern-box-inner">
-            <h4>BOTANICAL</h4>
-          </div>
-        </a>
-
-        <a href="style_vintage.html" class="pattern-box-img" style="background-image: url('images/taste/vintage/01.jpg');">
-          <div class="pattern-box-inner">
-            <h4>VINTAGE</h4>
-          </div>
-        </a>
-
-        <a href="style_japandi.html" class="pattern-box-img" style="background-image: url('images/taste/japandi/01.jpg');">
-          <div class="pattern-box-inner">
-            <h4>JAPANDI</h4>
-          </div>
-        </a>
-
-        <a href="style_japanese.html" class="pattern-box-img" style="background-image: url('images/taste/japanese/01.jpg');">
-          <div class="pattern-box-inner">
-            <h4>JAPANESE</h4>
-          </div>
-        </a>
+      <div class="style-link-carousel">
+        <div class="arrow prev">‹</div>
+        <div class="arrow next">›</div>
+        <div class="slider-track">
+          <a href="style_cool.html" class="style-link-slide" style="background-image: url('images/taste/cool/01.jpg');">
+            <span class="style-link-slide-cat">TASTE</span>
+            <span class="style-link-slide-name">COOL</span>
+          </a>
+          <a href="style_natural_cool.html" class="style-link-slide" style="background-image: url('images/taste/natural_cool/01.jpg');">
+            <span class="style-link-slide-cat">TASTE</span>
+            <span class="style-link-slide-name">NATURAL COOL</span>
+          </a>
+          <a href="style_natural_warm.html" class="style-link-slide" style="background-image: url('images/taste/natural_warm/01.jpg');">
+            <span class="style-link-slide-cat">TASTE</span>
+            <span class="style-link-slide-name">NATURAL WARM</span>
+          </a>
+          <a href="style_cute.html" class="style-link-slide" style="background-image: url('images/taste/cute/01.jpg');">
+            <span class="style-link-slide-cat">TASTE</span>
+            <span class="style-link-slide-name">CUTE</span>
+          </a>
+          <a href="style_hotel.html" class="style-link-slide" style="background-image: url('images/taste/hotel/01.jpg');">
+            <span class="style-link-slide-cat">TASTE</span>
+            <span class="style-link-slide-name">HOTEL LIKE</span>
+          </a>
+          <a href="style_botanical.html" class="style-link-slide" style="background-image: url('images/taste/botanical/01.jpg');">
+            <span class="style-link-slide-cat">TASTE</span>
+            <span class="style-link-slide-name">BOTANICAL</span>
+          </a>
+          <a href="style_vintage.html" class="style-link-slide" style="background-image: url('images/taste/vintage/01.jpg');">
+            <span class="style-link-slide-cat">TASTE</span>
+            <span class="style-link-slide-name">VINTAGE</span>
+          </a>
+          <a href="style_japandi.html" class="style-link-slide" style="background-image: url('images/taste/japandi/01.jpg');">
+            <span class="style-link-slide-cat">TASTE</span>
+            <span class="style-link-slide-name">JAPANDI</span>
+          </a>
+          <a href="style_japanese.html" class="style-link-slide" style="background-image: url('images/taste/japanese/01.jpg');">
+            <span class="style-link-slide-cat">TASTE</span>
+            <span class="style-link-slide-name">JAPANESE</span>
+          </a>
+          <a href="style_relax.html" class="style-link-slide" style="background-image: url('images/story/relax/01.jpg');">
+            <span class="style-link-slide-cat">STORY</span>
+            <span class="style-link-slide-name">RELAX</span>
+          </a>
+          <a href="style_green.html" class="style-link-slide" style="background-image: url('images/story/green/01.jpg');">
+            <span class="style-link-slide-cat">STORY</span>
+            <span class="style-link-slide-name">GREEN</span>
+          </a>
+          <a href="style_frame.html" class="style-link-slide" style="background-image: url('images/story/frame/01.jpg');">
+            <span class="style-link-slide-cat">STORY</span>
+            <span class="style-link-slide-name">FRAME</span>
+          </a>
+          <a href="style_night.html" class="style-link-slide" style="background-image: url('images/story/night/01.jpg');">
+            <span class="style-link-slide-cat">STORY</span>
+            <span class="style-link-slide-name">NIGHT</span>
+          </a>
+          <a href="style_cafe.html" class="style-link-slide" style="background-image: url('images/story/cafe/01.jpg');">
+            <span class="style-link-slide-cat">STORY</span>
+            <span class="style-link-slide-name">CAFE</span>
+          </a>
+          <a href="style_gather.html" class="style-link-slide" style="background-image: url('images/story/gather/01.jpg');">
+            <span class="style-link-slide-cat">STORY</span>
+            <span class="style-link-slide-name">GATHER</span>
+          </a>
+          <a href="style_hobby.html" class="style-link-slide" style="background-image: url('images/story/hobby/01.jpg');">
+            <span class="style-link-slide-cat">STORY</span>
+            <span class="style-link-slide-name">HOBBY</span>
+          </a>
+          <a href="style_play_wellness.html" class="style-link-slide" style="background-image: url('images/story/play_wellness/01.jpg');">
+            <span class="style-link-slide-cat">STORY</span>
+            <span class="style-link-slide-name">PLAY &amp; WELLNESS</span>
+          </a>
+        </div>
+        <div class="dots"></div>
       </div>
     </section>
 
