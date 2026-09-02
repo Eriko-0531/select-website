@@ -652,6 +652,107 @@ hr.divider-line {
 .unique-grid .pattern-box-inner h4 { margin: 0 0 4px; font-size: 21px; font-weight: 700; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); }
 .unique-grid .pattern-box-inner p { font-size: 11.5px; }
 
+/* STYLE詳細ページ：「このスタイルにおすすめのアイテム」プレビュー（SELECT ITEM実商品へのリンク） */
+.item-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.item-preview-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 170px;
+  padding: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.item-preview-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  transition: transform 0.3s ease;
+}
+
+.item-preview-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(0, 0, 0, .8), rgba(0, 0, 0, .15) 60%, transparent);
+}
+
+.item-preview-card:hover { transform: translateY(-3px); }
+.item-preview-card:hover img { transform: scale(1.05); }
+
+.item-preview-cat {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  background: rgba(255, 255, 255, .9);
+  color: #333;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+/* STYLE詳細ページ：「ここまでがこのスタイルの紹介」区切りマーク（他のスタイルを見る、の直前） */
+.style-end-mark {
+  --style-accent: #98DBCE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 4px 0 44px;
+}
+
+.style-end-line {
+  flex: 1;
+  max-width: 160px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--style-accent));
+}
+
+.style-end-line + .style-end-label + .style-end-line { background: linear-gradient(90deg, var(--style-accent), transparent); }
+
+.style-end-label {
+  font-family: "Noto Serif JP", serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  color: var(--style-accent);
+}
+
+.item-preview-body { position: relative; z-index: 2; }
+.item-preview-brand { display: block; font-size: 9.5px; opacity: .85; margin-bottom: 3px; }
+.item-preview-name { display: block; font-size: 14px; font-weight: 700; line-height: 1.3; text-shadow: 0 1px 3px rgba(0, 0, 0, .5); }
+
+.item-preview-more {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
+  padding-bottom: 2px;
+}
+
+.item-preview-more:hover { color: #333; }
+
 .story-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .story-card-item { position: relative; display: flex; flex-direction: column; justify-content: flex-end; height: 280px; padding: 20px; border-radius: 8px; overflow: hidden; color: #fff; text-decoration: none; background-size: cover; background-position: center; transition: transform 0.2s, box-shadow 0.2s; }
 .story-card-item:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
@@ -796,6 +897,66 @@ hr.divider-line {
 }
 
 .dots span.active { background: #7CCFC0; }
+
+/* 「他のスタイルを見る」横自動スクロールスライダー（style-link-slider.js と対）
+   注意：.slider-container は使わない（slider.js が .card 前提で全 .slider-container を
+   走査し dots を上書きしてしまうため、専用クラスで衝突を回避） */
+.style-link-carousel {
+  max-width: 1000px;
+  margin: 10px auto 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.style-link-slide {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  flex: 0 0 calc((100% / 4) - 15px);
+  aspect-ratio: 4 / 3;
+  margin: 0 8px;
+  padding: 12px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
+  color: #fff;
+}
+
+.style-link-slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, .75), rgba(0, 0, 0, .1) 60%, transparent);
+}
+
+.style-link-slide-cat {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  background: rgba(255, 255, 255, .85);
+  color: #333;
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+
+.style-link-slide-name {
+  position: relative;
+  z-index: 1;
+  font-size: 13px;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+}
+
+@media (max-width: 760px) {
+  .style-link-slide { flex: 0 0 calc((100% / 2) - 12px); }
+}
 
 .youtube-slide {
   flex: 0 0 calc((100% / 3) - 20px);
