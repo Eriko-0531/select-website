@@ -556,7 +556,7 @@
         window.removeEventListener("beforeprint", onBeforePrint);
         if (!printStarted) {
           alert(
-            "印刷画面が開けなかったようです。SlackやLINEなどアプリ内のブラウザで開いている場合は、Safari（または Chrome）で開き直してからもう一度お試しください。"
+            "印刷画面が開けなかったようです。もう一度ボタンをタップしてみてください（ブラウザ側の一時的なブロックで開かないことがあります）。それでも開かない場合、SlackやLINEなどアプリ内のブラウザで開いている可能性があるので、Safari（または Chrome）で開き直してからもう一度お試しください。"
           );
         }
       }, 1200);
