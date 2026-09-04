@@ -457,11 +457,11 @@ hr.divider-line {
 }
 
 .media-row--design-intro .media-row-text {
-  flex: 0 1 380px;
+  flex: 0 1 420px;
   min-width: 300px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .media-row--design-intro .media-row-image,
   .media-row--design-intro .media-row-text {
     flex: 1 1 auto;

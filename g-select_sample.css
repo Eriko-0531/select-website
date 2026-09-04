@@ -337,7 +337,7 @@ section {
   color: #888;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .media-row,
   .media-row.reverse {
     flex-direction: column;
